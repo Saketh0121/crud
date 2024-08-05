@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Sunny_Kasuvojula_A3__11_1_S4.Models.Sales>
+
+@{
+    ViewData["Title"] = "Sales List";
+}
+
+<h1>Sales List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>SalesId</th>
+            <th>Quarter</th>
+            <th>Year</th>
+            <th>Amount</th>
+            <th>Employee Id</th>
+            <th>Employee</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sales in Model)
+        {
+            <tr>
+                <td>@sales.SalesId</td>
+                <td>@sales.Quarter</td>
+                <td>@sales.Year</td>
+                <td>@sales.Amount</td>
+                <td>@sales.EmployeeId</td>
+                <td>@sales.Employee.Firstname</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Add" class="btn btn-primary">Add New Sale</a>

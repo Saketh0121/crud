@@ -1,0 +1,41 @@
+﻿@model Sunny_Kasuvojula_A3__11_1_S4.Models.Sales
+
+<h1>Create Sale</h1>
+
+<form asp-action="Add" class="d-flex flex-wrap">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group w-50">
+        <label asp-for="Quarter" class="control-label"></label>
+        <input asp-for="Quarter" class="form-control" />
+    </div>
+    <div class="w-50 p-1 ml-3 mt-4">
+        <span asp-validation-for="Quarter" class="text-danger"></span>
+    </div>
+    <div class="form-group w-50">
+        <label asp-for="Year" class="control-label"></label>
+        <input asp-for="Year" class="form-control" type="number" min="1900" max="2100" />
+    </div>
+    <div class="w-50 p-1 ml-3 mt-4">
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+    <div class="form-group w-50">
+        <label asp-for="Amount" class="control-label"></label>
+        <input asp-for="Amount" class="form-control" />
+    </div>
+    <div class="w-50 p-1 ml-3 mt-4">
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+    <div class="form-group w-50">
+        <label asp-for="EmployeeId" class="control-label"></label>
+        <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeListDropdown">
+            <option value="">-- Select Employee --</option>
+        </select>
+    </div>
+    <div class="w-50 p-1 ml-3 mt-4">
+        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-2">
+        <input type="submit" value="Add" class="btn btn-primary" />
+        <a class="btn btn-danger" asp-action="Add">Clear</a>
+    </div>
+</form>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Sunny_Kasuvojula_A3__11_1_S4.Models.Sales>
+
+@{
+    ViewData["Title"] = "Sales by Employee";
+}
+
+<h1>Quarterly Sales Data</h1>
+<form method="post" asp-action="Index">
+    <div class="form-group">
+        <label for="selectedEmployeeIdFromDropdown">Select Employee:</label>
+        <select id="selectedEmployeeIdFromDropdown" name="selectedEmployeeIdFromDropdown" class="form-control w-50">
+            <option value="">-- Select Employee --</option>
+            @foreach (var employee in (SelectList)ViewBag.DisplayEmployeeList)
+            {
+                <option value="@employee.Value">@employee.Text</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Filter</button>
+</form>
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>QYear</th>
+                <th>The Quarter</th>
+                <th>Employees</th>
+                <th>The Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var sale in Model)
+            {
+                <tr>
+                    <td>@sale.Year</td>
+                    <td>@sale.Quarter</td>
+                    <td>@sale.Employee.Firstname</td>
+                    <td>$ @sale.Amount</td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+
